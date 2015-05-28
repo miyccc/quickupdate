@@ -9,6 +9,7 @@
 #include "ConfigParser.h"
 #include "lua_module_register.h"
 
+#include "MyUnZip.h"
 
 // extra lua module
 #include "cocos2dx_extra.h"
@@ -16,6 +17,7 @@
 #include "luabinding/lua_cocos2dx_extension_filter_auto.hpp"
 #include "luabinding/lua_cocos2dx_extension_nanovg_auto.hpp"
 #include "luabinding/lua_cocos2dx_extension_nanovg_manual.hpp"
+#include "lua_myunzip_auto.hpp"
 #include "luabinding/cocos2dx_extra_luabinding.h"
 #include "luabinding/HelperFunc_luabinding.h"
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -121,10 +123,13 @@ bool AppDelegate::applicationDidFinishLaunching()
     ScriptEngineManager::getInstance()->setScriptEngine(engine);
     lua_State* L = engine->getLuaStack()->getLuaState();
     lua_module_register(L);
-
+    
+    //myunzip
+    register_all_myunzip(L);
+    
     // use Quick-Cocos2d-X
     quick_module_register(L);
-
+    
     LuaStack* stack = engine->getLuaStack();
 #if ANYSDK_DEFINE > 0
     lua_getglobal(stack->getLuaState(), "_G");
@@ -174,6 +179,8 @@ void AppDelegate::initResourcePath()
     }
     
     sharedFileUtils->setSearchPaths(searchPaths);
+    
+    //MyUnZip::getInstance()->UnZipFile("/Users/binW/game.zip", "/Users/binW/");
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too
