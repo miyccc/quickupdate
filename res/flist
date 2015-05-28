@@ -1,0 +1,14 @@
+local flist = {
+	appVersion = 1,
+	version = "1.0.0",
+	dirPaths = {
+		{name = "fonts"},
+		{name = "launcher"},
+	},
+	fileInfoList = {
+		{name = "fonts/arial.ttf", code = "32700b65505046b5e7828d5dceebad07", size = 778552},
+		{name = "launcher/logo.png", code = "b5c81bdb45d08b14210c5eaeaf196ecd", size = 36055},
+	},
+}
+
+return flist
