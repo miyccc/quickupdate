@@ -133,7 +133,7 @@ bool AppDelegate::applicationDidFinishLaunching()
     lua_pop(stack->getLuaState(), 1);
 #endif
 
-    stack->setXXTEAKeyAndSign("2dxLua", strlen("2dxLua"), "XXTEA", strlen("XXTEA"));
+//    stack->setXXTEAKeyAndSign("2dxLua", strlen("2dxLua"), "XXTEA", strlen("XXTEA"));
 
     //register custom function
     //LuaStack* stack = engine->getLuaStack();
