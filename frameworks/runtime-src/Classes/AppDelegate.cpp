@@ -9,6 +9,8 @@
 #include "ConfigParser.h"
 #include "lua_module_register.h"
 
+#include "MyUnZip.h"
+
 // extra lua module
 #include "cocos2dx_extra.h"
 #include "lua_extensions/lua_extensions_more.h"
@@ -177,6 +179,8 @@ void AppDelegate::initResourcePath()
     }
     
     sharedFileUtils->setSearchPaths(searchPaths);
+    
+//    MyUnZip::getInstance()->UnZipFile("/Users/binW/Downloads/game.zip", "/Users/binW/Downloads/", PrintfText);
 }
 
 // This function will be called when the app is inactive. When comes a phone call,it's be invoked too

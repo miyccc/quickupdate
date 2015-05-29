@@ -23,6 +23,7 @@
 #include "base/CCData.h"
 #include "base/ccMacros.h"
 #include "platform/CCFileUtils.h"
+#include "CCLuaEngine.h"
 #include <map>
 
 
@@ -30,7 +31,7 @@ USING_NS_CC;
 
 MyUnZip::MyUnZip()
 {
-    
+    m_UnZipFinishHandler = 0;
 }
 
 MyUnZip::~MyUnZip()
@@ -47,6 +48,29 @@ MyUnZip* MyUnZip::getInstance()
         m_unzip = new MyUnZip();
     }
     return m_unzip;
+}
+
+void MyUnZip::registerUnZipFinishHandler(int handler)
+{
+    unregisterUnZipFinishHandler();
+    m_UnZipFinishHandler = handler;
+}
+
+void MyUnZip::unregisterUnZipFinishHandler()
+{
+    if(m_UnZipFinishHandler)
+    {
+        LuaEngine::getInstance()->removeScriptHandler(m_UnZipFinishHandler);
+        m_UnZipFinishHandler = 0;
+    }
+}
+
+void MyUnZip::onUnZipFinish()
+{
+    if(m_UnZipFinishHandler)
+    {
+        LuaEngine::getInstance()->executeEvent(m_UnZipFinishHandler, "state");
+    }
 }
 
 bool MyUnZip::UnZipFile(const char* filename, const char* destPath)
@@ -185,7 +209,7 @@ bool MyUnZip::UnZipFile(const char* filename, const char* destPath)
         }
     }
     unzClose(zipfile);
-    CCLOG("end uncompressing");
+    onUnZipFinish();
     
     return true;
 }
