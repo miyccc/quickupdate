@@ -20,4 +20,3 @@ end
 
 package.loaded["launcher.launcher"] = nil
 require("launcher.launcher")
--- require("app.MyApp").new():run()
