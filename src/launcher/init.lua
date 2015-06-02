@@ -4,11 +4,14 @@ require("lfs")
 
 Launcher = {}
 -- 资源服务器url
-Launcher.server = "http://127.0.0.1/udp/"
+Launcher.server = "http://127.0.0.1/upd/"
 Launcher.fListName = "flist"
 Launcher.libDir = "lib/"
 Launcher.lcherZipName = "launcher.zip"
 Launcher.updateFilePostfix = ".upd"
+
+--是否需要更新
+Launcher.needUpdate = true
 
 Launcher.ResolutionPolicy = {
     EXACT_FIT = 0,
@@ -103,10 +106,6 @@ elseif Launcher.platform == "ios" then
 	    return ok, ret
 	end
 end
-
-
---是否需要更新
-Launcher.needUpdate = true
 
 --请求类型
 Launcher.RequestType = { LAUNCHER = 0, FLIST = 1, RES = 2 }

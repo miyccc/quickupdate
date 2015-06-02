@@ -102,13 +102,13 @@ function LauncherScene:_onResponse(event, requestType)
             local dataRecv = request:getResponseData()
             if requestType == Launcher.RequestType.LAUNCHER then
             	self:_onLauncherPacakgeFinished(dataRecv)
-                print('_onLauncherPacakgeFinished')
+                print('onLauncherPacakgeFinished')
             elseif requestType == Launcher.RequestType.FLIST then
             	self:_onFileListDownloaded(dataRecv)
-                print('_onFileListDownloaded')
+                print('onFileListDownloaded')
             else
             	self:_onResFileDownloaded(dataRecv)
-                print('_onResFileDownloaded')
+                print('onResFileDownloaded')
             end
         end
     elseif event.name == "progress" then
@@ -269,7 +269,6 @@ function LauncherScene:_reqNextResFile()
     else
     	self:_endAllResFileDownloaded()
     end
-
 end
 
 function LauncherScene:_endAllResFileDownloaded()
@@ -301,9 +300,6 @@ function LauncherScene:_endAllResFileDownloaded()
     self._updateRetType = Launcher.UpdateRetType.SUCCESSED
     self:_endUpdate()
 end
-
-
-
 
 local lchr = LauncherScene.new()
 Launcher.runWithScene(lchr)
