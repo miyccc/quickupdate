@@ -24,5 +24,8 @@ CONFIG_SCREEN_HEIGHT = 960
 -- auto scale mode
 CONFIG_SCREEN_AUTOSCALE = "FIXED_WIDTH"
 
--- 资源服务url
-DownloadServerUrl = "http://127.0.0.1/res/"
+-- SceneOne Url
+SCENE_ONE_URL = "http://127.0.0.1/res/sceneone.zip"
+
+-- SceneTwo Url
+SCENE_TWO_URL = "http://127.0.0.1/res/scenetwo.zip"

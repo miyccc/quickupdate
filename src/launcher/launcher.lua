@@ -92,6 +92,8 @@ function LauncherScene:_requestFromServer(filename, requestType, waittime)
     end
 end
 
+require "lfs"
+
 function LauncherScene:_onResponse(event, requestType)
     local request = event.request
     if event.name == "completed" then
@@ -100,6 +102,7 @@ function LauncherScene:_onResponse(event, requestType)
         	self:_endUpdate()
         else
             local dataRecv = request:getResponseData()
+            print('type is:',type(dataRecv),string.len(dataRecv))
             if requestType == Launcher.RequestType.LAUNCHER then
             	self:_onLauncherPacakgeFinished(dataRecv)
                 print('onLauncherPacakgeFinished')

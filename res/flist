@@ -4,6 +4,7 @@ local flist = {
 	dirPaths = {
 		{name = "fonts"},
 		{name = "launcher"},
+		{name = "lib"},
 	},
 	fileInfoList = {
 		{name = "fonts/arial.ttf", code = "32700b65505046b5e7828d5dceebad07", size = 778552},
