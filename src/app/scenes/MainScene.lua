@@ -24,8 +24,9 @@ function MainScene:ctor()
 end
 
 function MainScene:onEnter()
-    --self:_requestFromServer(DownloadServerUrl,1,30)
     self:_initUI()
+    -- local makeFlist = require('app.scenes.MakeFlist')
+    -- makeFlist:run('','','')
 end
 
 function MainScene:onExit()
@@ -49,7 +50,24 @@ function MainScene:_initUI()
         end)
         :align(display.CENTER, display.cx - 70, display.cy)
         :addTo(self)
+
+    local videoPlayer = ccexp.VideoPlayer:create()
+    local node = display.newNode()
+    local function onVideoEventCallback(sender,eventType)
+        if eventType == ccexp.VideoPlayerEvent.COMPLETED then
+            node:removeSelf()
+        end
+    end
+    videoPlayer:setFileName('res/video/op.mp4')
+    videoPlayer:setKeepAspectRatioEnabled(true)
+    videoPlayer:setFullScreenEnabled(true)
+    videoPlayer:addEventListener(onVideoEventCallback)
+    videoPlayer:play()
+    node:addChild(videoPlayer)
+    self:addChild(node)
+
 end
+
 
 function MainScene:_firClick(event)
     local key = cc.UserDefault:getInstance():getIntegerForKey('SceneOne')
@@ -74,7 +92,6 @@ function MainScene:_sceClick(event)
 end
 
 function MainScene:_requestFromServer(url, requestType, waittime)
-    print('create request:',url)
     local request = cc.HTTPRequest:createWithUrl(function(event) 
         self:_onResponse(event, requestType)
     end, url, cc.kCCHTTPRequestMethodGET)

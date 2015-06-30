@@ -142,8 +142,8 @@ using namespace cocos2d::experimental::ui;
         self.moviePlayer.movieSourceType = MPMovieSourceTypeFile;
     }
     self.moviePlayer.allowsAirPlay = false;
-    self.moviePlayer.controlStyle = MPMovieControlStyleEmbedded;
-    self.moviePlayer.view.userInteractionEnabled = true;
+    self.moviePlayer.controlStyle = MPMovieControlStyleNone;
+    self.moviePlayer.view.userInteractionEnabled = NO;
     
     auto clearColor = [UIColor clearColor];
     self.moviePlayer.backgroundView.backgroundColor = clearColor;
@@ -168,6 +168,7 @@ using namespace cocos2d::experimental::ui;
 
 -(void) videoFinished:(NSNotification *)notification
 {
+
     if(_videoPlayer != nullptr)
     {
         if([self.moviePlayer playbackState] != MPMoviePlaybackStateStopped)
@@ -287,6 +288,7 @@ VideoPlayer::~VideoPlayer()
     if(_videoView)
     {
         [((UIVideoViewWrapperIos*)_videoView) dealloc];
+//        _videoView = NULL;
     }
 }
 

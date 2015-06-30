@@ -28,14 +28,14 @@ local function findindir(path, wefind, dir_table, r_table, intofolder)
                 findindir(f, wefind, dir_table, r_table, intofolder)
             else
                 table.insert(r_table, {name = f, size = attr.size})
-            end  
+            end
         end
     end
 end
 
 MakeFileList = {}
 
-function MakeFileList:run(path,arg,version)
+function MakeFileList:run(path,version)
     local dir_table = {}
     local input_table = {}
     findindir(path, ".", dir_table, input_table, true)

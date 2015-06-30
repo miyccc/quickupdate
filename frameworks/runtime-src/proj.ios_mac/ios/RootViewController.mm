@@ -125,5 +125,16 @@
     [super dealloc];
 }
 
+-(void) viewDidAppear:(BOOL)animated{
+    cocos2d::Director::getInstance()->resume();
+    cocos2d::Director::getInstance()->startAnimation();
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    cocos2d::Director::getInstance()->pause();
+    cocos2d::Director::getInstance()->stopAnimation();
+}
+
 
 @end
