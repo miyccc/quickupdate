@@ -9,6 +9,7 @@ LOCAL_MODULE_FILENAME := libcocos2dlua
 LOCAL_SRC_FILES := hellolua/main.cpp \
 ../../Classes/VisibleRect.cpp \
 ../../Classes/AppDelegate.cpp \
+../../Classes/MyUnZip.cpp \
 ../../Classes/ConfigParser.cpp
 
 ifeq ($(NDK_DEBUG),1)
@@ -29,11 +30,11 @@ endif
 
 LOCAL_C_INCLUDES := \
 $(LOCAL_PATH)/../../Classes/runtime \
-$(LOCAL_PATH)/../../Classes \
 $(COCOS2DX_ROOT)/external \
 $(COCOS2DX_ROOT)/external/protobuf-lite/src \
 $(LOCAL_PATH)/../../Classes/quick-src \
-$(LOCAL_PATH)/../../Classes/quick-src/extra
+$(LOCAL_PATH)/../../Classes/quick-src/extra \
+$(LOCAL_PATH)/../../Classes
 
 LOCAL_STATIC_LIBRARIES := cocos2d_lua_static
 LOCAL_STATIC_LIBRARIES += lua_extensions_static

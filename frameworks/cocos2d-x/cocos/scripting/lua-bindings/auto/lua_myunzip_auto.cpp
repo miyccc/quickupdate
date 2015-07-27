@@ -255,6 +255,7 @@ int lua_register_myunzip_MyUnZip(lua_State* tolua_S)
     g_typeCast["MyUnZip"] = "MyUnZip";
     return 1;
 }
+
 TOLUA_API int register_all_myunzip(lua_State* tolua_S)
 {
 	tolua_open(tolua_S);

@@ -26,10 +26,6 @@ THE SOFTWARE.
 ****************************************************************************/
 package org.cocos2dx.lua;
 
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.util.Enumeration;
 import java.util.ArrayList;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
@@ -39,7 +35,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -47,10 +42,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.text.format.Formatter;
-import android.util.Log;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 
 public class AppActivity extends Cocos2dxActivity{
@@ -66,7 +58,7 @@ public class AppActivity extends Cocos2dxActivity{
 			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
 		}
 		
-		Luajavabridge.init(this)
+		Luajavabridge.init(this);
 		//2.Set the format of window
 		
 		// Check the wifi is opened when the native is debug.

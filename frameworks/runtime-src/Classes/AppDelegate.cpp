@@ -125,7 +125,9 @@ bool AppDelegate::applicationDidFinishLaunching()
     lua_module_register(L);
     
     //myunzip
+    lua_getglobal(L, "_G");
     register_all_myunzip(L);
+    lua_pop(L, 1);
     
     // use Quick-Cocos2d-X
     quick_module_register(L);

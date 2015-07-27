@@ -131,7 +131,7 @@
 }
 
 
-- (void)viewWillDisappear:(BOOL)animated{
+-(void)viewWillDisappear:(BOOL)animated{
     cocos2d::Director::getInstance()->pause();
     cocos2d::Director::getInstance()->stopAnimation();
 }
